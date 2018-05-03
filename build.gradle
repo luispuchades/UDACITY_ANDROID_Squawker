@@ -9,11 +9,8 @@ buildscript {
     dependencies {
         classpath 'com.android.tools.build:gradle:3.1.2'
 
-        // TODO (1) / COMPLETED: Make a new Firebase project in the Firebase Console and follow the
-        // instructions.
         // The console is here: https://console.firebase.google.com/
 
-        // TODO (2) / COMPLETED: Add Google Services plugin here
         classpath 'com.google.gms:google-services:3.2.1'
         
 
