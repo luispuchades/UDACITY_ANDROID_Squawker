@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'android-apt'
 
 android {
     compileSdkVersion 27
@@ -35,7 +36,7 @@ dependencies {
 
 
     // Schematic dependencies for ContentProvider
-    annotationProcessor 'net.simonvt.schematic:schematic-compiler:0.6.3'
+    apt 'net.simonvt.schematic:schematic-compiler:0.6.3'
     implementation 'net.simonvt.schematic:schematic:0.6.3'
 
     // Preferences Dependencies
@@ -43,4 +44,15 @@ dependencies {
 
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
 
+    // TODO (3) / COMPLETED: Add the Firebase libraries and apply the GPS plugin in this file. Make
+    // sure to save the google.services.json file in the app folder. After syncing the changes, you
+    // should be able to send a notification to your app using the Firebase console. The app
+    // must be in the background!
+
+    // Firebase dependency
+    implementation 'com.google.firebase:firebase-messaging:15.0.2'
 }
+
+// Apply the Google Services plugin. Make sure to add the google-services.json file in the app
+// folder. You download it from the Firebase console
+apply plugin: 'com.google.gms.google-services'
