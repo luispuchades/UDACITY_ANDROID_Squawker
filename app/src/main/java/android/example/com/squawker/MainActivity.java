@@ -35,6 +35,8 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
+import com.google.firebase.iid.FirebaseInstanceId;
+
 public class MainActivity extends AppCompatActivity implements
         LoaderManager.LoaderCallbacks<Cursor> {
 
@@ -86,15 +88,30 @@ public class MainActivity extends AppCompatActivity implements
         // Start the loader
         getSupportLoaderManager().initLoader(LOADER_ID_MESSAGES, null, this);
 
-        // TODO (1) / COMPLETED: Get the test data here from the extras bundle that came with this
-        // intent.
-        // To confirm that the data was passed in, make sure to show the data in a log statement.
+        // Gets the extra data from the intent that started the activity. For *notification*
+        // messages, this will contain key value pairs stored in the *data* section of the message.
         Bundle extras = getIntent().getExtras();
-
-        if (extras != null && extras.containsKey("test")){
-            // If the key is there, print out the volue of the "test"
+        // Checks if the extras exist and if the key "test" from our FCM message is in the intent
+        if (extras != null && extras.containsKey("test")) {
+            // If the key is there, print out the value of "test"
             Log.d(LOG_TAG, "Contains: " + extras.getString("test"));
         }
+
+        // TODO (1) / COMPLETED: Make a new package for your FCM service classes called "fcm"
+
+
+        // TODO (2) / COMPLETED: Create a new Service class that extends FirebaseInstanceIdService.
+        // You'll need to implement the onTokenRefresh method. Simply have it print out
+        // the new token.
+        String token = FirebaseInstanceId.getInstance().getToken();
+
+        // TODO (3) / COMPLETED: Here, in MainActivity, get a token using FirebaseInstanceId
+        // .getInstance().getToken()
+        String msg = getString(R.string.message_token_format, token);
+
+        // TODO (4) / COMPLETED: Get the message from that token and print it in a log statement
+        Log.d(LOG_TAG, msg);
+
 
     }
 
